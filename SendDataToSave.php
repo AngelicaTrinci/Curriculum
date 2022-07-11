@@ -8,11 +8,14 @@ if($dbCon -> connect_error) {
     echo "Posso connettermi";
 }
 //if($dbCon != NULL) {
-    $nAzienda = $_POST['nAzienda'];
-     $candidatura = $_POST['candidatura'];
-     $luogo = $_POST['luogo'];
-     $link = $_POST['link'];
-     $dataInvio = $_POST['dataInvio'];
+    $nAzienda = mysqli_real_escape_string($dbCon, $_POST['nAzienda']);
+    $candidatura = mysqli_real_escape_string($dbCon, $_POST['candidatura']);
+    $luogo = mysqli_real_escape_string($dbCon, $_POST['luogo']);
+    $link = mysqli_real_escape_string($dbCon, $_POST['link']);
+    $dataInvio = $_POST['dataInvio'];
+
+    $stringa1 = $nAzienda[0];
+    echo "Il primo elemento è: " . $stringa1;
 
      $selQuery = "SELECT * FROM curriculum";
  
@@ -20,7 +23,7 @@ if($dbCon -> connect_error) {
      VALUES ('$nAzienda', '$candidatura', '$luogo', '$link', '$dataInvio')";
     
      if ($dbCon->query($query) == TRUE) {
-        echo "Record inserito con successo";
+        include 'Successo.html';
      }
      else {
         echo "Errore: " . $query . "<br>" . $dbCon->error;

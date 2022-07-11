@@ -3,128 +3,54 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        * {
-            /* Niente bordi bianchi sulla pagina*/
-            margin: 0px;
-            box-sizing: border-box;
-        }
-        /* --------------------------------------------------------------- */
-        /*Testata pagina*/
-        
-        #header {
-            background-color: rgb(0, 128, 96);
-            padding: 50px;
-            margin-top: -9px;
-            text-align: center;
-            color: white;
-            width: 100%;
-        }
-        /* --------------------------------------------------------------- */
-        /*Corpo principale*/
-        
-        .principale {
-            float: left;
-            width: 50%;
-            padding: 10px;
-            margin-left: 5%;
-            text-decoration: none;
-            height: 90%;
-        }
-        
-        h6 {
-            font-size: xx-large;
-            text-align: center;
-            margin: 30px 10px;
-        }
-        
-        .button {
-            float: left;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            display: block;
-            padding: 16px 32px;
-            font-size: 20px;
-            margin: 5px 240px;
-            transition-duration: 0.4s;
-            cursor: pointer;
-        }
-        
-        .button1 {
-            background-color: white;
-            color: black;
-            border: 2px solid #4CAF50;
-            padding: 16px 43px;
-        }
-        
-        .button1:hover {
-            background-color: #4CAF50;
-            color: white;
-        }
-        
-        .button2 {
-            background-color: white;
-            color: black;
-            border: 2px solid rgb(13, 13, 255);
-        }
-        
-        .button2:hover {
-            background-color: rgb(0, 0, 255);
-            color: white;
-        }
-        /* --------------------------------------------------------------- */
-        /* Fine corpo principale, inizio corpo lato sinistro */
-        /* Manca il calendario interattivo */
-        
-        .lati {
-            float: left;
-            background-color: rgb(14, 187, 66);
-            border: 2px solid rgb(14, 187, 66);
-            color: rgb(14, 187, 66);
-            width: 20%;
-            height: 500px;
-        }
-        /* --------------------------------------------------------------- */
-        /* Pulizia dopo le due colonne, così che non si ammontini il resto */
-        
-        section::after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-        /* --------------------------------------------------------------- */
-        /* Fine impaginazione*/
-        
-        footer {
-            position: absolute;
-            color: white;
-            background-color: #2f302f;
-            padding: 15px;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
     <title> Database curriculum mandati! </title>
     <link rel="icon" type="image/x-icon" href="">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
 
-<body>
-    <h1 id="header"> Benvenuta! </h1>
-    <section>
-        <div class="lati"> Ancora vuoto </div>
-        <div class="principale">
-            <h6> Scegli l'operazione da svolgere</h6>
-            <button class="button button1" onclick="document.location = 'http://localhost/Lavoro/Ricerca.php'"> Cerca </button>
-            <button class="button button2" onclick="document.location ='Inserimento.html'"> Inserisci </button>
+<body class="d-flex flex-column h-100">
+    <main class="flex-shrink-0">
+        <div class="container">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+                <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <span class="fs-4"> Curriculum </span>
+                </a>
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active" aria-current="page"> Home </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> Search </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link"> Insert </a>
+                    </li>
+                </ul>
+            </header>
         </div>
-    </section>
-
-    <footer>
-        <p> Contattami a questa <a href="mailto: angelica.trinci@gmail.com"> email </a> <br> Oppure al numero di telefono +39 366 48 32939 </p>
-        <p style="text-align: center;"> Versione 1.1</p>
+        <div class="px-4 py-5 my-5 text-center">
+            <h1> Benvenuta! </h1>
+            <div class="col-lg-6 mx-auto">
+                <p class="lead mb-4"> Scegli l'operazione da svolgere</p>
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="document.location = 'http://localhost/Lavoro/Ricerca.php'"> Cerca </button>
+                    <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="document.location ='http://localhost/Lavoro/Insert.php'"> Inserisci </button>
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer fixed-bottom mt-auto d-flex flex-wrap justify-content-center py-3 mb-4 py-3 bg-light border-top">
+        <div class="container">
+            <span> Se cio' che vedi ti piace, contattami a questa <a href="mailto: angelica.trinci@gmail.com"> email </a> <br> Oppure al numero di telefono +39 366 48 32939 </span> <br>
+            <span> Versione 1.2 </span>
+        </div>
     </footer>
-
+    
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -13,8 +13,6 @@ if($dbCon -> connect_error) {
      $luogo = $_POST['luogo'];
      $link = $_POST['link'];
      $dataInvio = $_POST['dataInvio'];
-
-     $selQuery = "SELECT * FROM curriculum";
  
      $query = "INSERT INTO curriculum (NomeAzienda,Candidatura,Luogo,Link,DataInvio)
      VALUES ('$nAzienda', '$candidatura', '$luogo', '$link', '$dataInvio')";
