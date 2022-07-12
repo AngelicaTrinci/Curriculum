@@ -1,33 +1,45 @@
 <?php
+//Apertura connessione al database
 $dbCon = new mysqli('localhost', 'root', '', 'curriculummandati');
+
+//Formattazione corretta del dato da inserire nel database, senza spazi o caratteri speciali che possano romperlo
+function formattaDato($dbCon, $dato) {
+    $dato = trim($dato);
+    $dato = mysqli_real_escape_string($dbCon, $dato);
+    return $dato;
+}
 
 if($dbCon -> connect_error) {
     echo "Non riesco a connettere";
     die('Could not connect to the server');
-}else{
-    echo "Posso connettermi";
 }
 //if($dbCon != NULL) {
-    $nAzienda = mysqli_real_escape_string($dbCon, $_POST['nAzienda']);
-    $candidatura = mysqli_real_escape_string($dbCon, $_POST['candidatura']);
-    $luogo = mysqli_real_escape_string($dbCon, $_POST['luogo']);
-    $link = mysqli_real_escape_string($dbCon, $_POST['link']);
-    $dataInvio = $_POST['dataInvio'];
+    //Recupero dati dal Form.
+$nAzienda = formattaDato($dbCon, $_POST['nAzienda']);
+$candidatura = formattaDato($dbCon, $_POST['candidatura']);
+$luogo = formattaDato($dbCon, $_POST['luogo']);
+$link = formattaDato($dbCon, $_POST['link']);
+$dataInvio = $_POST['dataInvio'];
+echo $nAzienda . "<br>" . $candidatura . "<br>" . $luogo . "<br>" . $link . "<br>" . $dataInvio . "<br>";
+$sql = "SELECT * FROM curriculum WHERE nAzienda = ". $nAzienda . " AND candidatura = " . $candidatura;
+echo $sql;
+$result = mysqli_query($dbCon, "SELECT * FROM curriculum WHERE nAzienda = '$nAzienda' AND candidatura = '$candidatura'");
 
-    $stringa1 = $nAzienda[0];
-    echo "Il primo elemento è: " . $stringa1;
 
-     $selQuery = "SELECT * FROM curriculum";
- 
-     $query = "INSERT INTO curriculum (NomeAzienda,Candidatura,Luogo,Link,DataInvio)
-     VALUES ('$nAzienda', '$candidatura', '$luogo', '$link', '$dataInvio')";
+if(mysqli_num_rows($result) == 0) {
+    include 'Fallimento.php';
+    echo "Risultato già trovato";
+} else {
+    $query = "INSERT INTO curriculum (NomeAzienda,Candidatura,Luogo,Link,DataInvio)
+    VALUES ('$nAzienda', '$candidatura', '$luogo', '$link', '$dataInvio')";
     
-     if ($dbCon->query($query) == TRUE) {
+    if ($dbCon->query($query) == TRUE) {
         include 'Successo.html';
-     }
-     else {
+    }
+    else {
         echo "Errore: " . $query . "<br>" . $dbCon->error;
-          }
-     mysqli_close($dbCon);
+    }
+}
+mysqli_close($dbCon);
     //}
 ?>
