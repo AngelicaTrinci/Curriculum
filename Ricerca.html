@@ -27,13 +27,21 @@
                 </header>
             </div>
         </main>
-        <div class="px-4 py-5 my-5 text-center">
-            <h1> Successo! </h1>
-            <div class="col-lg-6 mx-auto">
-                <p class="lead mb-4"> L'operazione da te effettuata e' avvenuta con successo. <br>La prego di ritornare al menu' o di inserire un altro elemento </p>
-                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="document.location = 'http://localhost/Lavoro/index.html'"> Home </button>
-                    <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="document.location ='http://localhost/Lavoro/Insert.php'"> Inserisci </button>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="page-header">
+                        <h2>Ricerca</h2>
+                    </div>
+                    <div class="col-lg-6 mx-auto">
+                        <p class="lead mb-4"> Qui puoi cercare i curriculum mandati </p>
+                        <form action="SearchData.php" method="get">
+                            <div class="mb-3">
+                                <input type="text" name="keyword" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-primary" name="submit"> Invia </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

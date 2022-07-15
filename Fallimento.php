@@ -15,7 +15,7 @@
                             <a href="/Lavoro/index.html" class="nav-link active" aria-current="page"> Home </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link"> Search </a>
+                            <a href="/Lavoro/Ricerca.html" class="nav-link"> Search </a>
                         </li>
                         <li class="nav-item">
                             <a href="/Lavoro/Insert.php" class="nav-link"> Insert </a>
