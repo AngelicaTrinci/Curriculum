@@ -14,16 +14,20 @@ if($dbCon -> connect_error) {
     die('Could not connect to the server');
 }
 //Recupero dati dal Form.
+// 
 $nAzienda = formattaDato($dbCon, $_POST['nAzienda']);
 $candidatura = formattaDato($dbCon, $_POST['candidatura']);
 $luogo = formattaDato($dbCon, $_POST['luogo']);
 $link = formattaDato($dbCon, $_POST['link']);
 $dataInvio = $_POST['dataInvio'];
-$sql = "SELECT * FROM curriculum WHERE NomeAzienda = '$nAzienda' AND Candidatura = '$candidatura' ";
+$sql = "SELECT * FROM curriculum WHERE NomeAzienda = '$nAzienda' AND Candidatura = '$candidatura' AND DataInvio >= DATE_SUB('$dataInvio', INTERVAL 1 MONTH)";
 if($result = mysqli_query($dbCon, $sql)) {
+    
     if(mysqli_num_rows($result) > 0) {
         include 'Fallimento.php';
+        echo 'boy';
     } else {
+
         $query = "INSERT INTO curriculum (NomeAzienda,Candidatura,Luogo,Link,DataInvio)
         VALUES ('$nAzienda', '$candidatura', '$luogo', '$link', '$dataInvio')";
         
